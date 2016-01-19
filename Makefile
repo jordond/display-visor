@@ -21,3 +21,4 @@ uninstall:
 	rm ${SYSCONFDIR}/acpi/events/LID_display-visor
 	rm ${LIBDIR}/systemd/system-sleep/WAKEUP_display-visor.sh
 	rm ${DESTDIR}${PREFIX}/display-visor
+	rm /usr/local/bin/display-visor
