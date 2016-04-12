@@ -109,16 +109,16 @@ config_closed_lid ()
     elif [ -n "$LVDS1" -a -z "$lidtest" ]; then
         echo "$prefix Laptop display will be ignored unless -l option is set"
     fi
-    if [ -n "$HDMI1" -a -z "$VGA1" ]; then
+    if [ -n "$HDMI1" ]; then
         echo "$prefix SETTING: HDMI1 (Primary)"
         xrandr --output HDMI1 --auto --primary \
                --output VIRTUAL1 --off \
                --output eDP1 --off
     else
         echo "$prefix No external monitors are plugged in"
-        xrandr --output HDMI1 --off \
-               --output VIRTUAL1 --off \
-               --output eDP1 --primary --mode 1920x1080 --rotate $ROTATE
+        # xrandr --output HDMI1 --off \
+        #        --output VIRTUAL1 --off \
+        #        --output eDP1 --primary --mode 1920x1080 --rotate $ROTATE
 
     fi
 }
@@ -127,7 +127,7 @@ config_closed_lid ()
 config_open_lid ()
 {
     echo "$prefix Laptop lid is open"
-    if [ -n "$HDMI1" -a -z "$VGA1" ]; then
+    if [ -n "$HDMI1" ]; then
         echo "$prefix SETTING: LVDS1 (Primary) - HDMI1 (Right)"
         xrandr --output HDMI1 --primary --mode 1920x1200 --pos 0x0 --rotate normal \
                --output VIRTUAL1 --off \
